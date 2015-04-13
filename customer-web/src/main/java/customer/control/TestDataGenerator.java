@@ -1,4 +1,4 @@
-package generator;
+package customer.control;
 
 import customer.entity.Customer;
 import customer.entity.Order;
@@ -7,30 +7,26 @@ import customer.entity.Product;
 import java.util.List;
 import java.util.Random;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import org.soqqo.datagen.RandomDataGenerator;
 import org.soqqo.datagen.config.DataTypes.Name;
 import org.soqqo.datagen.config.GenConfig;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class TestDataGenerator {
 
-    private static EntityManagerFactory emf;
-    private static EntityManager em;
+    @PersistenceContext
+    private EntityManager em;
 
-    public static void main(String[] args) {
-        buildEntityManager();
-
+    @Transactional
+    public void generate() {
         Random random = new Random();
-
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
         Product product = new Product();
         product.setName("Bleistift");
         product.setPrice(2.5d);
         em.persist(product);
-        transaction.commit();
 
         RandomDataGenerator rdg = new RandomDataGenerator();
         List<Customer> customers = rdg.generateList(400,
@@ -39,9 +35,6 @@ public class TestDataGenerator {
                 .name(Name.Lastname, "lastname"), Customer.class);
 
         for (Customer customer : customers) {
-            transaction = em.getTransaction();
-            transaction.begin();
-
             em.persist(customer);
 
             for (int j = 0; j < random.nextInt(50 - 1 + 1) + 1; j++) {
@@ -56,23 +49,6 @@ public class TestDataGenerator {
                     order.getItems().add(item);
                 }
             }
-            transaction.commit();
-        }
-
-        closeEntityManager();
-    }
-
-    private static void buildEntityManager() {
-        emf = Persistence.createEntityManagerFactory("orders");
-        em = emf.createEntityManager();
-    }
-
-    private static void closeEntityManager() {
-        if (emf != null && emf.isOpen()) {
-            emf.close();
-        }
-        if (em != null && em.isOpen()) {
-            em.close();
         }
     }
 
