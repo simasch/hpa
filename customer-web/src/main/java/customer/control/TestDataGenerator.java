@@ -37,14 +37,19 @@ public class TestDataGenerator {
         for (Customer customer : customers) {
             em.persist(customer);
 
-            for (int j = 0; j < random.nextInt(50 - 1 + 1) + 1; j++) {
-                Order order = new Order();
+            List<Order> orders = rdg.generateList(random.nextInt(10),
+                    new GenConfig()
+                    .dateTimeRandom("orderDate"), Order.class);
+
+            for (Order order : orders) {
                 customer.getOrders().add(order);
 
-                for (int k = 0; k < random.nextInt(20 - 1 + 1) + 1; k++) {
-                    OrderItem item = new OrderItem();
+                List<OrderItem> orderItems = rdg.generateList(random.nextInt(20),
+                        new GenConfig(), OrderItem.class);
+
+                for (OrderItem item : orderItems) {
                     item.setProduct(product);
-                    item.setQuantity(random.nextInt(10 - 1 + 1) + 1);
+                    item.setQuantity(random.nextInt(5) + 1);
 
                     order.getItems().add(item);
                 }

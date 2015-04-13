@@ -28,8 +28,31 @@
                 </div>
 
                 <h:commandButton styleClass="btn btn-default" value="Save" action="#{customerBean.save()}"/>
-                
+
                 <h:commandLink value="Cancel" action="#{customerBean.cancel()}"/>
+
+                <br /><br />
+
+                <h2>Order History</h2>
+
+                <h:dataTable value="#{customerBean.customer.orders}" var="order" style="width: 100%" class="table table-striped">
+                    <h:column>
+                        <f:facet name="header">Id</f:facet>
+                            #{order.id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Date</f:facet>
+                        <h:outputText value="#{order.orderDate}">
+                            <f:convertDateTime pattern="dd.MM.yyyy" type="date" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Total Amount</f:facet>
+                        <h:outputText value="#{order.totalAmount}">
+                            <f:convertNumber locale="de_CH" pattern="#####0.00"/>
+                        </h:outputText>
+                    </h:column>
+                </h:dataTable>
 
             </div>
 
