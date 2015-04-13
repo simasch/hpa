@@ -8,10 +8,10 @@
         <class>customer.entity.OrderItem</class>
         <class>customer.entity.Product</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:log4jdbc:derby://localhost:1527/orders;create=true"/>
-            <property name="javax.persistence.jdbc.user" value="orders"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:log4jdbc:hsqldb:file:db/orders"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
             <property name="javax.persistence.jdbc.driver" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
-            <property name="javax.persistence.jdbc.password" value="orders"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
