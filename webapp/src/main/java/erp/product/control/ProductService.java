@@ -16,12 +16,11 @@ public class ProductService {
     protected EntityManager em;
 
     public List<Product> getProducts(String term) {
-        String queryString = "SELECT p FROM Product p ORDER BY p.name";
-
-        TypedQuery<Product> q = em.createQuery(queryString, Product.class);
-        List<Product> list = q.getResultList();
-
-        return list;
+        TypedQuery<Product> q = em.createQuery(
+                "SELECT p FROM Product p WHERE p.name like :term ORDER BY p.name",
+                Product.class);
+        q.setParameter("term", term + "%");
+        return q.getResultList();
     }
 
     public <T> T find(Class<T> c, Serializable id) {

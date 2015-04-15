@@ -16,12 +16,11 @@ public class CustomerService {
     protected EntityManager em;
 
     public List<Customer> getCustomers(String term) {
-        String queryString = "SELECT c FROM Customer c ORDER BY c.lastname, c.firstname";
-
-        TypedQuery<Customer> q = em.createQuery(queryString, Customer.class);
-        List<Customer> list = q.getResultList();
-
-        return list;
+        TypedQuery<Customer> q = em.createQuery(
+                "SELECT c FROM Customer c WHERE c.lastname LIKE :term ORDER BY c.lastname, c.firstname", 
+                Customer.class);
+        q.setParameter("term", term + "%");
+        return q.getResultList();
     }
 
     public <T> T find(Class<T> c, Serializable id) {
