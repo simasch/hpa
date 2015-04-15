@@ -68,13 +68,18 @@
         <dependency>
             <groupId>org.apache.solr</groupId>
             <artifactId>solr-solrj</artifactId>
-            <version>5.0.0</version>
+            <version>5.1.0</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-api</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>ch.simas.qlrm</groupId>
+            <artifactId>qlrm</artifactId>
+            <version>1.5.1</version>
         </dependency>
     </dependencies>
     
