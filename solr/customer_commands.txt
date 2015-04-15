@@ -1,0 +1,14 @@
+Clear index: 
+http://localhost:8983/solr/customer/update?stream.body=<delete><query>*:*</query></delete>&commit=true
+
+Index db: 
+http://localhost:8983/solr/customer/dataimport?command=full-import
+
+Reload core: 
+http://localhost:8983/solr/admin/cores?action=RELOAD&core=customer
+
+Retrieve all: 
+http://localhost:8983/solr/customer/select?q=*:*&omitHeader=true
+
+Suggest: 
+http://localhost:8983/solr/customer/terms?terms.fl=suggest&wt=json&omitHeader=true&terms.prefix=wh

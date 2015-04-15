@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+	<!-- lib dir="../../../contrib/dataimporthandler/lib/" regex=".*\.jar"/ -->
+	<lib dir="../../../dist/" regex="solr-dataimporthandler-\d.*\.jar"/>
+
+	<luceneMatchVersion>5.0.0</luceneMatchVersion>
+	
+	<codecFactory name="CodecFactory" class="solr.SchemaCodecFactory"/>
+	
+	<requestHandler name="standard" class="solr.StandardRequestHandler" default="true"/>
+	<requestHandler name="/update" class="solr.UpdateRequestHandler"/>
+	<requestHandler name="/dataimport" class="org.apache.solr.handler.dataimport.DataImportHandler">
+		<lst name="defaults">
+			<str name="config">db-data-config.xml</str>
+		</lst>
+	</requestHandler>
+	<requestHandler name="/terms" class="solr.SearchHandler" startup="lazy">
+		<lst name="defaults">
+			<bool name="terms">true</bool>
+			<bool name="distrib">false</bool>
+		</lst>
+		<arr name="components">
+			<str>terms</str>
+		</arr>
+	</requestHandler>
+	
+	<searchComponent name="terms" class="solr.TermsComponent"/>
+	
+	<admin>
+		<defaultQuery>*:*</defaultQuery>
+	</admin>
+</config>

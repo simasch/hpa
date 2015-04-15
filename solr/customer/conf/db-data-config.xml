@@ -1,0 +1,9 @@
+<dataConfig>
+	<dataSource type="JdbcDataSource" driver="org.hsqldb.jdbcDriver" url="jdbc:hsqldb:file:/Users/simon/Documents/github/hpa/webapp/db/orders" user="sa" password=""/>
+	<document name="customer">
+		<entity name="customer" query="SELECT c.id as id, concat(c.lastname, ' ', c.firstname) as name FROM Customers c">
+			<field column="id" name="id"/>
+			<field column="name" name="lastname"/>
+		</entity>
+	</document>
+</dataConfig>
