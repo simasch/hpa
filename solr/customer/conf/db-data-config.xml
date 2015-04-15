@@ -1,9 +1,10 @@
 <dataConfig>
 	<dataSource type="JdbcDataSource" driver="org.hsqldb.jdbcDriver" url="jdbc:hsqldb:file:/Users/simon/Documents/github/hpa/webapp/db/orders" user="sa" password=""/>
 	<document name="customer">
-		<entity name="customer" query="SELECT c.id as id, concat(c.lastname, ' ', c.firstname) as name FROM Customers c">
-			<field column="id" name="id"/>
-			<field column="name" name="lastname"/>
+		<entity name="customer" query="SELECT C.ID AS ID, CONCAT(C.LASTNAME, ' ', C.FIRSTNAME) AS NAME, SUM(P.PRICE) AS REVENUE FROM CUSTOMERS C JOIN ORDERS O ON O.CUSTOMER_ID = C.ID JOIN ORDERITEMS OI ON OI.ORDER_ID = O.ID JOIN PRODUCTS P ON P.ID = OI.PRODUCT_ID GROUP BY ID">
+			<field column="ID" name="id"/>
+			<field column="NAME" name="name"/>
+			<field column="REVENUE" name="revenue"/>
 		</entity>
 	</document>
 </dataConfig>

@@ -38,6 +38,7 @@
 		<field name="id" type="int" stored="true" indexed="true"/>
 		<field name="name" type="text" stored="true" indexed="true"/>
 		<field name="suggest" type="suggest" stored="true" indexed="true"/>
+		<field name="revenue" type="double" stored="true" indexed="true"/>
 	</fields>
 	
 	<uniqueKey>id</uniqueKey>

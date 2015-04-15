@@ -4,12 +4,13 @@ import javax.faces.webapp.FacesServlet;
 import javax.servlet.ServletContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.solr.SolrAutoConfiguration;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.context.ServletContextAware;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = SolrAutoConfiguration.class)
 public class Application implements ServletContextAware {
 
     public static void main(String[] args) throws Exception {
