@@ -24,7 +24,7 @@ public class CustomerResource implements Serializable {
     @RequestMapping(value = "/api/customers")
     @ResponseBody
     public List<Customer> list(@RequestParam(value = "term", required = false) String term) {
-        return customerService.getCustomers(term);
+        return customerService.getCustomers(term == null ? "" : term);
     }
 
     @RequestMapping(value = "/api/customers", method = RequestMethod.DELETE)
