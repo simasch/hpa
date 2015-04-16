@@ -24,6 +24,7 @@ public class CustomerBean {
     }
 
     public void searchV2() {
+        customers = customerService.getCustomersWithConstructorExpression(searchText);
     }
 
     public void clear() {
