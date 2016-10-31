@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.3.2.RELEASE</version>
+        <version>1.4.1.RELEASE</version>
     </parent>
 
     <groupId>ch.simas.hpa</groupId>
@@ -75,20 +75,9 @@
             <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.solr</groupId>
-            <artifactId>solr-solrj</artifactId>
-            <version>5.5.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
             <groupId>ch.simas.qlrm</groupId>
             <artifactId>qlrm</artifactId>
-            <version>1.5.1</version>
+            <version>1.7.0</version>
         </dependency>
     </dependencies>
     
