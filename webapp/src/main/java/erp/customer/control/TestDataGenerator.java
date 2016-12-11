@@ -34,29 +34,20 @@ public class TestDataGenerator {
         product.setPrice(2.5d);
         em.persist(product);
 
-        List<Customer> customers = new ArrayList<>();
         for (int i = 0; i < 400; i++) {
             Person person = fairy.person();
             Customer customer = new Customer();
             customer.setFirstname(person.getFirstName());
             customer.setLastname(person.getLastName());
             em.persist(customer);
-            customers.add(customer);
-        }
 
-        DateProducer dateProducer = fairy.dateProducer();
-        for (Customer customer : customers) {
-            List<Order> orders = new ArrayList<>();
-            for (int i = 0; i < random.nextInt(10) + 1; i++) {
+            DateProducer dateProducer = fairy.dateProducer();
+            for (int j = 0; j < random.nextInt(10) + 1; j++) {
                 Order order = new Order();
                 order.setOrderDate(dateProducer.randomDateInThePast(10).toDate());
                 customer.getOrders().add(order);
-            }
 
-            for (Order order : orders) {
-                List<OrderItem> orderItems = new ArrayList<>();
-
-                for (int i = 0; i < random.nextInt(20) + 1; i++) {
+                for (int k = 0; k < random.nextInt(20) + 1; k++) {
                     OrderItem item = new OrderItem();
                     item.setProduct(product);
                     item.setQuantity(random.nextInt(5) + 1);
