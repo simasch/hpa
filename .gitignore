@@ -1,2 +1,4 @@
 /customer-web/target/
 /webapp/target/
+/.idea
+/webapp/.idea
