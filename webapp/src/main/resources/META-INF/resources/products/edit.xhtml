@@ -1,16 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Products</title>
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css" rel="stylesheet" />
-    </h:head>
-    <h:body>
-        <h:form>
-            <div class="container" >
-
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:body>
+    <ui:composition template="../templates/template.xhtml">
+        <ui:define name="content">
+            <h:form>
                 <h1>Product</h1>
 
                 <div class="form-group" style="padding-top: 20px;">
@@ -29,9 +26,8 @@
                 <h:commandButton styleClass="btn btn-default" value="Save" action="#{productBean.save()}"/>
 
                 <h:commandLink value="Cancel" action="#{productBean.cancel()}"/>
-
-            </div>
-
-        </h:form>
-    </h:body>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
 </html>

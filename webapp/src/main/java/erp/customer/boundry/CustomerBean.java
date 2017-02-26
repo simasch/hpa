@@ -50,7 +50,7 @@ public class CustomerBean {
     public String back() {
         customers = null;
 
-        return "/index.xhtml";
+        return "/template.xhtml";
     }
 
     public List getCustomers() {

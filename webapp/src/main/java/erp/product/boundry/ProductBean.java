@@ -49,7 +49,7 @@ public class ProductBean {
     public String back() {
         products = null;
 
-        return "/index.xhtml";
+        return "/template.xhtml";
     }
 
     public int getNumberOfProducts() {

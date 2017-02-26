@@ -2,16 +2,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Customers</title>
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css" rel="stylesheet" />
-    </h:head>
-    <h:body>
-        <h:form>
-            <div class="container" >
-
+<h:body>
+    <ui:composition template="../templates/template.xhtml">
+        <ui:define name="content">
+            <h:form>
                 <h1>Customer</h1>
 
                 <div class="form-group" style="padding-top: 20px;">
@@ -31,19 +27,20 @@
 
                 <h:commandLink value="Cancel" action="#{customerBean.cancel()}"/>
 
-                <br /><br />
+                <br/><br/>
 
                 <h2>Order History</h2>
 
-                <h:dataTable value="#{customerBean.customer.orders}" var="order" style="width: 100%" class="table table-striped">
+                <h:dataTable value="#{customerBean.customer.orders}" var="order" style="width: 100%"
+                             class="table table-striped">
                     <h:column>
                         <f:facet name="header">Id</f:facet>
-                            #{order.id}
+                        #{order.id}
                     </h:column>
                     <h:column>
                         <f:facet name="header">Date</f:facet>
                         <h:outputText value="#{order.orderDate}">
-                            <f:convertDateTime pattern="dd.MM.yyyy" type="date" />
+                            <f:convertDateTime pattern="dd.MM.yyyy" type="date"/>
                         </h:outputText>
                     </h:column>
                     <h:column>
@@ -53,9 +50,8 @@
                         </h:outputText>
                     </h:column>
                 </h:dataTable>
-
-            </div>
-
-        </h:form>
-    </h:body>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
 </html>

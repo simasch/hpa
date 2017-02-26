@@ -1,20 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>ERP</title>
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css" rel="stylesheet" />
-    </h:head>
-    <h:body>
-
-        <div class="container">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+    <ui:composition template="templates/template.xhtml">
+        <ui:define name="content">
             <h1>ERP</h1>
 
             <p><a href="/customers/list.jsf">Manage Customers</a></p>
-            
             <p><a href="/products/list.jsf">Manage Products</a></p>
-        </div>
-    </h:body>
+        </ui:define>
+    </ui:composition>
+</h:body>
 </html>
