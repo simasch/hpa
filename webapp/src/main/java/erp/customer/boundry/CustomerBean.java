@@ -27,6 +27,10 @@ public class CustomerBean {
         customers = customerService.getCustomersWithConstructorExpression(searchText);
     }
 
+    public void searchV3() {
+        customers = customerService.getCustomersWithSql(searchText);
+    }
+
     public void clear() {
         customers = null;
     }

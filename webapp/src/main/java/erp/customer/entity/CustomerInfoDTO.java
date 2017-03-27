@@ -1,5 +1,7 @@
 package erp.customer.entity;
 
+import java.math.BigInteger;
+
 public class CustomerInfoDTO {
 
     private final Long id;
@@ -17,6 +19,13 @@ public class CustomerInfoDTO {
 
     public CustomerInfoDTO(Long id, String lastname, String firstname, double revenue) {
         this.id = id;
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.revenue = revenue;
+    }
+
+    public CustomerInfoDTO(BigInteger id, String lastname, String firstname, Double revenue) {
+        this.id = id.longValue();
         this.lastname = lastname;
         this.firstname = firstname;
         this.revenue = revenue;

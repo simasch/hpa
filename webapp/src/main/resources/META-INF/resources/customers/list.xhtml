@@ -14,10 +14,14 @@
                     <div class="col-sm-6">
                         <h:inputText styleClass="form-control" style="margin-right: 10px; margin-bottom: 15px;"
                                      value="#{customerBean.searchText}"/>
+
                         <h:commandButton styleClass="btn btn-default" style="margin-right: 10px;" value="Search V1"
                                          action="#{customerBean.searchV1()}"/>
                         <h:commandButton styleClass="btn btn-default" style="margin-right: 10px;" value="Search V2"
                                          action="#{customerBean.searchV2()}"/>
+                        <h:commandButton styleClass="btn btn-default" style="margin-right: 10px;" value="Search V3"
+                                         action="#{customerBean.searchV3()}"/>
+
                         <h:commandLink style="margin-right: 10px;" value="Clear" action="#{customerBean.clear()}"/>
                         <h:commandLink style="margin-right: 10px;" value="Back" action="#{customerBean.back()}"/>
                     </div>

@@ -2,3 +2,6 @@
 /webapp/target/
 /.idea
 /webapp/.idea
+/db
+/log4jdbc.out
+/webapp/hpa-webapp.iml
