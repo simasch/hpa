@@ -75,11 +75,7 @@ public class CustomerBean {
     }
 
     public int getNumberOfCustomers() {
-        if (customers == null) {
-            return 0;
-        } else {
-            return customers.size();
-        }
+        return customers == null ? 0 : customers.size();
     }
 
     public Customer getCustomer() {
