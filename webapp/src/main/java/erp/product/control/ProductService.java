@@ -17,7 +17,7 @@ public class ProductService {
 
     public List<Product> getProducts(String term) {
         TypedQuery<Product> q = em.createQuery(
-                "SELECT p FROM Product p WHERE p.name like :term ORDER BY p.name",
+                "SELECT p FROM Product p WHERE lower(p.name) like lower(:term) ORDER BY p.name",
                 Product.class);
         q.setParameter("term", term + "%");
         return q.getResultList();

@@ -2,13 +2,14 @@ package erp.customer.boundry;
 
 import erp.customer.control.CustomerService;
 import erp.customer.entity.Customer;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
-@Scope("session")
-@Component
+import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+import java.util.List;
+
+@Named
+@SessionScoped
 public class CustomerBean {
 
     @Autowired

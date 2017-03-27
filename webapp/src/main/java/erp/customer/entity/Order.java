@@ -40,11 +40,7 @@ public class Order implements Serializable {
     }
 
     public double getTotalAmount() {
-        double total = 0;
-        for (OrderItem item : items) {
-            total += item.getProduct().getPrice();
-        }
-        return total;
+        return items.stream().mapToDouble(item -> item.getProduct() == null ? 0.0d : item.getProduct().getPrice()).sum();
     }
 
     public List<OrderItem> getItems() {

@@ -2,13 +2,14 @@ package erp.product.boundry;
 
 import erp.product.control.ProductService;
 import erp.product.entity.Product;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
-@Scope("session")
-@Component
+import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+import java.util.List;
+
+@Named
+@SessionScoped
 public class ProductBean {
 
     @Autowired
@@ -53,11 +54,7 @@ public class ProductBean {
     }
 
     public int getNumberOfProducts() {
-        if (products == null) {
-            return 0;
-        } else {
-            return products.size();
-        }
+        return products == null ? 0 : products.size();
     }
 
     public List getProducts() {

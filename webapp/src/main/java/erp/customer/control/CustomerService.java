@@ -22,7 +22,7 @@ public class CustomerService {
 
     public List<Customer> getCustomers(String term) {
         TypedQuery<Customer> q = em.createQuery(
-                "SELECT c FROM Customer c WHERE c.lastname LIKE :term ORDER BY c.lastname, c.firstname",
+                "SELECT c FROM Customer c WHERE lower(c.lastname) LIKE lower(:term) ORDER BY c.lastname, c.firstname",
                 Customer.class);
         q.setParameter("term", term + "%");
         return q.getResultList();
@@ -34,7 +34,7 @@ public class CustomerService {
                 "SELECT NEW erp.customer.entity.CustomerInfoDTO" +
                         "(c.id, c.lastname, c.firstname, SUM(i.product.price)) " +
                         "FROM Customer c JOIN c.orders o JOIN o.items i " +
-                        "WHERE c.lastname LIKE :term " +
+                        "WHERE lower(c.lastname) LIKE lower(:term) " +
                         "GROUP BY c.id, c.lastname, c.firstname " +
                         "ORDER BY c.lastname, c.firstname");
 
@@ -49,7 +49,7 @@ public class CustomerService {
                         "JOIN ORDERS O ON C.ID = O.CUSTOMER_ID " +
                         "JOIN ORDERITEMS I ON O.ID = I.ORDER_ID " +
                         "JOIN PRODUCTS P ON I.PRODUCT_ID = P.ID " +
-                        "WHERE C.LASTNAME LIKE ? " +
+                        "WHERE LOWER(C.LASTNAME) LIKE LOWER(?) " +
                         "GROUP BY C.ID, C.LASTNAME, C.FIRSTNAME " +
                         "ORDER BY C.LASTNAME, C.FIRSTNAME");
 
