@@ -3,13 +3,16 @@ package erp.customer.boundry;
 import erp.customer.control.CustomerService;
 import erp.customer.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 import java.util.List;
 
 @Named
-@SessionScoped
+@RequestScoped
 public class CustomerBean {
 
     @Autowired

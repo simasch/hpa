@@ -4,12 +4,13 @@ import erp.product.control.ProductService;
 import erp.product.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 import java.util.List;
 
 @Named
-@SessionScoped
+@RequestScoped
 public class ProductBean {
 
     @Autowired
@@ -54,7 +55,11 @@ public class ProductBean {
     }
 
     public int getNumberOfProducts() {
-        return products == null ? 0 : products.size();
+        if (products == null) {
+            return 0;
+        } else {
+            return products.size();
+        }
     }
 
     public List getProducts() {
