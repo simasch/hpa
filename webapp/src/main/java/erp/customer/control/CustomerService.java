@@ -31,6 +31,7 @@ public class CustomerService {
         TypedQuery<Customer> q = em.createQuery(
                 "SELECT c FROM Customer c WHERE lower(c.lastname) LIKE lower(:term) ORDER BY c.lastname, c.firstname",
                 Customer.class);
+
         q.setParameter("term", term + "%");
         return q.getResultList();
     }
