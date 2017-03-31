@@ -3,11 +3,8 @@ package erp.customer.boundry;
 import erp.customer.control.CustomerService;
 import erp.customer.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 import java.util.List;
 
@@ -32,7 +29,11 @@ public class CustomerBean {
     }
 
     public void searchV3() {
-        customers = customerService.getCustomersWithSql(searchText);
+        customers = customerService.getCustomersWithSqlFromFile(searchText);
+    }
+
+    public void searchV4() {
+        customers = customerService.getCustomersWithJooq(searchText);
     }
 
     public void clear() {
