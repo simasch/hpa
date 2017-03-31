@@ -1,19 +1,11 @@
 package erp.customer.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "customers")
@@ -78,11 +70,11 @@ public class Customer implements Serializable {
     }
 
     public double getRevenue() {
-        double revenue = 0;
-        for (Order order : orders) {
-            revenue += order.getTotalAmount();
+        try {
+            return orders.stream().mapToDouble(Order::getTotalAmount).sum();
+        } catch (Exception e) {
+            return 0.0d;
         }
-        return revenue;
     }
 
 }
