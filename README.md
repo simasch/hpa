@@ -3,6 +3,7 @@
 ## Database
 
 hpa uses Derby Database for the examples. So you need to start  Derby in server mode:
+
 Go to your JAVA_HOME/db/bin and run startNetworkServer
 
 ## Run webapp
