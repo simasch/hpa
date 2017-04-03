@@ -9,7 +9,7 @@ run $DERBY_HOME/bin/startNetworkServer
 ## Run webapp
 mvn spring-boot:run
 
-[http://localhost:8080](http://localhost:8080)
+[http://localhost:5050](http://localhost:5050)
 
 ## Generate Test Data
 The database already contains some test data. But if you like to generate it you can use these services:
