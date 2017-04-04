@@ -12,11 +12,8 @@ mvn spring-boot:run
 [http://localhost:5050](http://localhost:5050)
 
 ## Generate Test Data
-The database already contains some test data. But if you like to generate it you can use these services:
-
- 1. DELETE http://localhost:8080/api/customers
  
- 2. GET http://localhost:8080/api/customers/generate
+[http://localhost:5050/api/customers/generate](http://localhost:5050/api/customers/generate)
 
 ## Links
 - [Random Data Generator](https://code.google.com/p/random-data-generator/)
