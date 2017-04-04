@@ -14,10 +14,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
-
-import static erp.database.Tables.*;
-import static org.jooq.impl.DSL.sum;
 
 @Service
 public class CustomerService {
@@ -73,7 +71,7 @@ public class CustomerService {
     }
 
     public List<CustomerInfoDTO> getCustomersWithJooq(String term) {
-        return create.
+        /* return create.
                 select(CUSTOMERS.ID, CUSTOMERS.LASTNAME, CUSTOMERS.FIRSTNAME, sum(PRODUCTS.PRICE)).
                 from(CUSTOMERS).
                 join(ORDERS).on(ORDERS.CUSTOMER_ID.eq(CUSTOMERS.ID)).
@@ -83,6 +81,8 @@ public class CustomerService {
                 groupBy(CUSTOMERS.ID, CUSTOMERS.LASTNAME, CUSTOMERS.FIRSTNAME).
                 orderBy(CUSTOMERS.LASTNAME, CUSTOMERS.FIRSTNAME).
                 fetchInto(CustomerInfoDTO.class);
+         */
+        return new ArrayList<>();
     }
 
     public <T> T find(Class<T> c, Serializable id) {
