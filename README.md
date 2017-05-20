@@ -2,9 +2,8 @@
 
 ## Database
 
-hpa uses Derby Database for the examples. So you need to start  Derby in server mode:
-
-run $DERBY_HOME/bin/startNetworkServer
+hpa uses H2 Database in server mode for the examples.
+Download and start H2: http://www.h2database.com/html/quickstart.html
 
 ## Run webapp
 mvn spring-boot:run

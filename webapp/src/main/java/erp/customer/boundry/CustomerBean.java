@@ -32,10 +32,6 @@ public class CustomerBean {
         customers = customerService.getCustomersWithSqlFromFile(searchText);
     }
 
-    public void searchV4() {
-        customers = customerService.getCustomersWithJooq(searchText);
-    }
-
     public void clear() {
         customers = null;
     }

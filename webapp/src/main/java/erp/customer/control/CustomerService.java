@@ -2,19 +2,16 @@ package erp.customer.control;
 
 import erp.customer.entity.Customer;
 import erp.customer.entity.CustomerInfoDTO;
-import org.jooq.DSLContext;
 import org.qlrm.executor.JpaQueryExecutor;
 import org.qlrm.mapper.JpaResultMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,8 +19,6 @@ public class CustomerService {
 
     @PersistenceContext
     protected EntityManager em;
-    @Inject
-    protected DSLContext create;
 
     public List<Customer> getCustomers(String term) {
         TypedQuery<Customer> q = em.createQuery(
@@ -68,21 +63,6 @@ public class CustomerService {
     public List<CustomerInfoDTO> getCustomersWithSqlFromFile(String term) {
         JpaQueryExecutor jpaQueryExecutor = new JpaQueryExecutor();
         return jpaQueryExecutor.executeSelect(em, CustomerInfoDTO.class, "sql/customer_revenue.sql", term + "%");
-    }
-
-    public List<CustomerInfoDTO> getCustomersWithJooq(String term) {
-        /* return create.
-                select(CUSTOMERS.ID, CUSTOMERS.LASTNAME, CUSTOMERS.FIRSTNAME, sum(PRODUCTS.PRICE)).
-                from(CUSTOMERS).
-                join(ORDERS).on(ORDERS.CUSTOMER_ID.eq(CUSTOMERS.ID)).
-                join(ORDERITEMS).on(ORDERITEMS.ORDER_ID.eq(ORDERS.ID)).
-                join(PRODUCTS).on(PRODUCTS.ID.eq(ORDERITEMS.PRODUCT_ID)).
-                where(CUSTOMERS.LASTNAME.like(term + "%")).
-                groupBy(CUSTOMERS.ID, CUSTOMERS.LASTNAME, CUSTOMERS.FIRSTNAME).
-                orderBy(CUSTOMERS.LASTNAME, CUSTOMERS.FIRSTNAME).
-                fetchInto(CustomerInfoDTO.class);
-         */
-        return new ArrayList<>();
     }
 
     public <T> T find(Class<T> c, Serializable id) {
