@@ -2,17 +2,16 @@
 
 ## Database
 
-hpa uses H2 Database in server mode for the examples.
-Download and start H2: http://www.h2database.com/html/quickstart.html
+hpa uses PosgreSQL Database for the examples.
 
 ## Run webapp
 mvn spring-boot:run
 
-[http://localhost:5050](http://localhost:5050)
+[http://localhost:8080](http://localhost:8080)
 
 ## Generate Test Data
  
-[http://localhost:5050/api/customers/generate](http://localhost:5050/api/customers/generate)
+[http://localhost:8080/api/customers/generate](http://localhost:8080/api/customers/generate)
 
 ## Links
 - [Random Data Generator](https://code.google.com/p/random-data-generator/)
