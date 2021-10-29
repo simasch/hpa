@@ -1,8 +1,8 @@
 package erp.customer.control;
 
 import erp.customer.entity.CustomerInfoDTO;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -18,7 +18,7 @@ public class CustomerServiceTest {
     public void getCustomersWithSql() {
         List<CustomerInfoDTO> customers = customerService.getCustomersWithSql(null);
 
-        Assert.assertTrue(customers.isEmpty());
+        Assertions.assertTrue(customers.isEmpty());
     }
 
 }

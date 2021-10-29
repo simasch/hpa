@@ -2,7 +2,11 @@
 
 ## Database
 
-hpa uses PosgreSQL Database for the examples.
+hpa uses PosgreSQL Database on Port 5433 for the examples.
+
+Start with Docker
+
+    docker run --name postgres-hpa -d -p5433:5432 -e POSTGRES_DB=hpa -e POSTGRES_USER=hpa -e POSTGRES_PASSWORD=hpa postgres
 
 ## Run webapp
 mvn spring-boot:run
